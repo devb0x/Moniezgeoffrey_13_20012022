@@ -25,11 +25,6 @@ const userAPI = {
     localStorage.removeItem("token")
   },
 
-  // redirect: (e) => {
-  //   e.preventDefault()
-  //   Window.location('/profile')
-  // },
-
   setDataUser: (token) => {
     return axios({
       method: 'post',
@@ -44,7 +39,6 @@ const userAPI = {
   },
 
   updateDataUser: (token, firstname, lastname) => {
-  // updateDataUser: (token, data) => {
     return axios({
       method: 'put',
       url: `${BASE_URL}/profile`,
@@ -58,7 +52,6 @@ const userAPI = {
     })
     .then(response => {
       return response.data
-      // return response.data.body OK for updateUser => data.payload.firstName
     })
   }
 

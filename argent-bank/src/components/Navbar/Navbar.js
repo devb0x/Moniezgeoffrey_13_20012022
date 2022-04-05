@@ -20,7 +20,6 @@ const Navbar = () => {
 
   let navigate = useNavigate()
 
-
   const dispatch = useDispatch()
   const logoutHandler = () => {
     setIsAuth(false)
@@ -43,7 +42,7 @@ const Navbar = () => {
           dispatch(errorActions.clearError())
         })
     }
-  }, [token])
+  }, [dispatch, token])
 
   return (
     <nav className={`${classes['main-nav']}`}>

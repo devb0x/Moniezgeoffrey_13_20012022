@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, {useState} from 'react'
 import {useDispatch, useSelector} from "react-redux"
 import {authActions} from "../../store/authSlice"
 
@@ -16,9 +16,6 @@ const User = () => {
   const [firstname, setFirstname] = useState(firstName)
   const [lastname, setLastname] = useState(lastName)
 
-  // let firstnameUpdated = useRef()
-  // let lastnameUpdated = useRef()
-
   const editModeHandler = () => {
     setEditMode(!editMode)
     setFirstname(firstName)
@@ -35,14 +32,6 @@ const User = () => {
 
   const updateUserHandler = (event) => {
     event.preventDefault()
-    console.log(firstname)
-    console.log(lastname)
-    // if (lastname === '') {
-    //   console.warn('why lastname empty?')
-    // }
-    // if (firstname === '') {
-    //   console.warn('why firstname empty?')
-    // }
 
     userAPI
       .updateDataUser(token, firstname, lastname)
@@ -53,18 +42,6 @@ const User = () => {
         setEditMode(false)
       })
   }
-
-  // useEffect(() => {
-  //   console.log('ca marche')
-  //   console.log(lastName)
-  //   setLastname(lastName)
-  //   setFirstname(firstName)
-  //   console.log(lastname)
-  // }, [lastName])
-  //
-  // console.log(lastname)
-  //
-  // console.log(firstname)
 
   return (
     <main className={`${classes['main']} ${classes['bg-dark']}`}>
@@ -89,8 +66,6 @@ const User = () => {
                 className={`${classes['input']} ${classes['input-firstname']}`}
                 placeholder={firstName}
                 onChange={firstnameInputHandler}
-                // value={firstName}
-                // ref={firstnameUpdated}
               />
               <label htmlFor="lastname" className={`${classes['hidden']}`}>lastname</label>
               <input
@@ -99,8 +74,6 @@ const User = () => {
                 className={`${classes['input']} ${classes['input-lastname']}`}
                 placeholder={lastName}
                 onChange={lastnameInputHandler}
-                // value={lastName}
-                // ref={lastnameUpdated}
               />
             </div>
             <div className={`${classes['button-wrapper']}`}>

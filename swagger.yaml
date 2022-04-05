@@ -68,6 +68,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          type: string
           description: Attach Bearer JWT token
           required: true
       produces:
@@ -91,6 +92,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          type: string
           description: Attach Bearer JWT token
           required: true
         - in: body
@@ -121,6 +123,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          type: string
           description: Attach bearer JWT token
           required: true
       produces:
@@ -135,6 +138,30 @@ paths:
         '500':
           description: Internal Server Error
   /transactions/{id}:
+    post:
+      security:
+        - Bearer: [ ]
+      tags:
+        - User Module
+      summary: Transactions
+      description: API for delete a transaction
+      parameters:
+        - in: header
+          name: Authorization
+          type: string
+          description: Attach bearer JWT token
+          required: true
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/TransactionId'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transaction retrieved successfully
+        '500':
+          description: Internal Server Error
     delete:
       security:
         - Bearer: []
@@ -145,6 +172,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          type: string
           description: Attach bearer JWT token
           required: true
         - in: body
@@ -169,6 +197,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          type: string
           description: Attach bearer JWT token
           required: true
       produces:
@@ -193,6 +222,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          type: string
           description: Attach bearer JWT token
           required: true
         - in: body
@@ -221,6 +251,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          type: string
           description: Attach bearer JWT token
           required: true
         - in: body
@@ -249,6 +280,7 @@ paths:
       parameters:
         - in: header
           name: Authorization
+          type: string
           description: Attach bearer JWT token
           required: true
         - in: body

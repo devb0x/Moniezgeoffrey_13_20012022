@@ -1,19 +1,17 @@
-import React, {useEffect, useRef} from 'react'
+import React, {useRef} from 'react'
 import {useDispatch, useSelector} from "react-redux"
 import classes from './Auth.module.css'
 
 import {authActions} from "../../store/authSlice"
-import {Navigate, useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 import userAPI from "../../services/userAPI"
 import {errorActions} from "../../store/error/errorSlice"
 
 const Auth = () => {
-  const token = useSelector((state) => state.authentication.token)
   const dispatch = useDispatch()
   const emailInputRef = useRef()
   const passwordInputRef = useRef()
   const rememberMeRef = useRef()
-
   const errorMessage = useSelector((state) => state.error.message)
 
   let navigate = useNavigate()
@@ -27,7 +25,6 @@ const Auth = () => {
     userAPI
       .login(enteredEmail, enteredPassword)
       .then((data) => {
-        console.log('rememberMe is : ' + rememberMe)
         dispatch(authActions.login({token: data.body.token}))
 
         if (rememberMe) {
@@ -44,7 +41,7 @@ const Auth = () => {
               message: 'Invalid email / password',
             })
           )
-          console.log(errorMessage)
+          console.error(errorMessage)
         }
       })
   }
@@ -74,7 +71,7 @@ const Auth = () => {
         <button type="submit" className={`${classes['sign-in-button']}`}>Sign In</button>
       </form>
     </section>
-  );
+  )
 }
 
-export default Auth;
+export default Auth

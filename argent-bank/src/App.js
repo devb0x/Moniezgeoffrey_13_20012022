@@ -37,6 +37,10 @@ function App() {
             exact path={"/profile"}
             element={tokenStore !== null ? <Profile /> : <Navigate to="/login" /> }
           />
+          <Route
+            exact path={'*'}
+            element={ <Navigate to="/homepage" /> }
+          />
         </Routes>
         <Footer />
       </Router>
